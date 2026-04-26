@@ -1,0 +1,12 @@
+<% content_for :title, "Edit Movie" %>
+
+<h1>Edit Movie</h1>
+
+<%= render "form", movie: @movie %>
+
+<br>
+
+<div>
+  <%= link_to "Show", @movie %> |
+  <%= link_to "Back to movie list", movies_path %>
+</div>

@@ -1,0 +1,32 @@
+<% content_for :title, "All Movies" %>
+
+<h1>All Movies</h1>
+
+<table id="movies">
+  <thead>
+    <tr>
+      <th>Movie Title</th>
+      <th>Rating</th>
+      <th>Release Date</th>
+      <th>More Info</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @movies.each do |movie| %>
+      <tr>
+        <td><%= movie.title %></td>
+        <td><%= movie.rating %></td>
+        <td><%= movie.release_date %></td>
+        <td><%= link_to "More about #{movie.title}", movie_path(movie) %></td>
+        <td><%= link_to "Edit", edit_movie_path(movie) %></td>
+        <td>
+          <%= link_to "Delete", movie_path(movie), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to "Add New Movie", new_movie_path %>
