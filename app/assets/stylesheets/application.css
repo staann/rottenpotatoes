@@ -24,3 +24,7 @@ table#movies td {
 	border: 1px solid #ccc;
 	padding: 0.5rem;
 }
+
+table#movies th.hilite {
+	background-color: #ffffcc;
+}
