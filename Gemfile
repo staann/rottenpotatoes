@@ -64,3 +64,8 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem "cucumber-rails", "~> 4.0", groups: [:development, :test]
+gem "database_cleaner", "~> 2.1", groups: [:development, :test]
+
+gem "rspec-expectations", "~> 3.13", group: :test

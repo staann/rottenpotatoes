@@ -521,3 +521,205 @@ Processing by MoviesController#index as HTML
 Completed 200 OK in 16ms (Views: 7.0ms | ActiveRecord: 0.2ms (1 query, 0 cached) | GC: 0.0ms)
 
 
+Started GET "/movies/new" for 127.0.0.1 at 2026-04-26 14:46:51 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Roteenpotatoes'*/[0m
+Processing by MoviesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering movies/new.html.erb within layouts/application
+  Rendered movies/_form.html.erb (Duration: 31.2ms | GC: 0.0ms)
+  Rendered movies/new.html.erb within layouts/application (Duration: 35.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 58.5ms | GC: 0.0ms)
+Completed 200 OK in 150ms (Views: 72.1ms | ActiveRecord: 4.2ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/movies" for 127.0.0.1 at 2026-04-26 14:46:54 -0300
+Processing by MoviesController#index as HTML
+Redirected to http://127.0.0.1:3000/movies?ratings%5BG%5D=1&ratings%5BNC-17%5D=1&ratings%5BPG%5D=1&ratings%5BPG-13%5D=1&ratings%5BR%5D=1&sort_by=release_date
+↳ app/controllers/movies_controller.rb:33:in 'MoviesController#index'
+Completed 302 Found in 10ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/movies?ratings%5BG%5D=1&ratings%5BNC-17%5D=1&ratings%5BPG%5D=1&ratings%5BPG-13%5D=1&ratings%5BR%5D=1&sort_by=release_date" for 127.0.0.1 at 2026-04-26 14:46:54 -0300
+Processing by MoviesController#index as HTML
+  Parameters: {"ratings" => {"G" => "1", "NC-17" => "1", "PG" => "1", "PG-13" => "1", "R" => "1"}, "sort_by" => "release_date"}
+  Rendering layout layouts/application.html.erb
+  Rendering movies/index.html.erb within layouts/application
+  [1m[36mMovie Load (0.4ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."rating" IN ('G', 'NC-17', 'PG', 'PG-13', 'R') ORDER BY release_date /*action='index',application='Roteenpotatoes',controller='movies'*/[0m
+  ↳ app/views/movies/index.html.erb:32
+  Rendered movies/index.html.erb within layouts/application (Duration: 6.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 7.8ms | GC: 0.0ms)
+Completed 200 OK in 35ms (Views: 8.4ms | ActiveRecord: 0.4ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/movies" for 127.0.0.1 at 2026-04-26 14:46:54 -0300
+Processing by MoviesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token" => "[FILTERED]", "movie" => {"title" => "", "rating" => "G", "release_date(1i)" => "2026", "release_date(2i)" => "4", "release_date(3i)" => "26"}, "commit" => "Save Changes"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='create',application='Roteenpotatoes',controller='movies'*/[0m
+  ↳ app/controllers/movies_controller.rb:60:in 'MoviesController#create'
+  [1m[36mMovie Create (3.0ms)[0m  [1m[32mINSERT INTO "movies" ("title", "rating", "release_date", "created_at", "updated_at") VALUES ('', 'G', '2026-04-26', '2026-04-26 17:46:54.916182', '2026-04-26 17:46:54.916182') RETURNING "id" /*action='create',application='Roteenpotatoes',controller='movies'*/[0m
+  ↳ app/controllers/movies_controller.rb:60:in 'MoviesController#create'
+  [1m[36mTRANSACTION (2.3ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='create',application='Roteenpotatoes',controller='movies'*/[0m
+  ↳ app/controllers/movies_controller.rb:60:in 'MoviesController#create'
+Redirected to http://127.0.0.1:3000/movies
+↳ app/controllers/movies_controller.rb:62:in 'MoviesController#create'
+Completed 302 Found in 24ms (ActiveRecord: 5.4ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/movies" for 127.0.0.1 at 2026-04-26 14:46:54 -0300
+Processing by MoviesController#index as TURBO_STREAM
+Redirected to http://127.0.0.1:3000/movies?ratings%5BG%5D=1&ratings%5BNC-17%5D=1&ratings%5BPG%5D=1&ratings%5BPG-13%5D=1&ratings%5BR%5D=1&sort_by=release_date
+↳ app/controllers/movies_controller.rb:33:in 'MoviesController#index'
+Completed 302 Found in 9ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/movies?ratings%5BG%5D=1&ratings%5BNC-17%5D=1&ratings%5BPG%5D=1&ratings%5BPG-13%5D=1&ratings%5BR%5D=1&sort_by=release_date" for 127.0.0.1 at 2026-04-26 14:46:54 -0300
+Processing by MoviesController#index as TURBO_STREAM
+  Parameters: {"ratings" => {"G" => "1", "NC-17" => "1", "PG" => "1", "PG-13" => "1", "R" => "1"}, "sort_by" => "release_date"}
+  Rendering layout layouts/application.html.erb
+  Rendering movies/index.html.erb within layouts/application
+  [1m[36mMovie Load (0.3ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."rating" IN ('G', 'NC-17', 'PG', 'PG-13', 'R') ORDER BY release_date /*action='index',application='Roteenpotatoes',controller='movies'*/[0m
+  ↳ app/views/movies/index.html.erb:32
+  Rendered movies/index.html.erb within layouts/application (Duration: 5.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 7.5ms | GC: 0.0ms)
+Completed 200 OK in 20ms (Views: 8.9ms | ActiveRecord: 0.3ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/movies/3/edit" for 127.0.0.1 at 2026-04-26 14:46:58 -0300
+Processing by MoviesController#edit as HTML
+  Parameters: {"id" => "3"}
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."id" = 3 LIMIT 1 /*action='edit',application='Roteenpotatoes',controller='movies'*/[0m
+  ↳ app/controllers/movies_controller.rb:82:in 'MoviesController#set_movie'
+  Rendering layout layouts/application.html.erb
+  Rendering movies/edit.html.erb within layouts/application
+  Rendered movies/_form.html.erb (Duration: 1.7ms | GC: 0.0ms)
+  Rendered movies/edit.html.erb within layouts/application (Duration: 3.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.7ms | GC: 0.0ms)
+Completed 200 OK in 19ms (Views: 6.0ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/movies" for 127.0.0.1 at 2026-04-26 14:46:59 -0300
+Processing by MoviesController#index as HTML
+Redirected to http://127.0.0.1:3000/movies?ratings%5BG%5D=1&ratings%5BNC-17%5D=1&ratings%5BPG%5D=1&ratings%5BPG-13%5D=1&ratings%5BR%5D=1&sort_by=release_date
+↳ app/controllers/movies_controller.rb:33:in 'MoviesController#index'
+Completed 302 Found in 12ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/movies?ratings%5BG%5D=1&ratings%5BNC-17%5D=1&ratings%5BPG%5D=1&ratings%5BPG-13%5D=1&ratings%5BR%5D=1&sort_by=release_date" for 127.0.0.1 at 2026-04-26 14:46:59 -0300
+Processing by MoviesController#index as HTML
+  Parameters: {"ratings" => {"G" => "1", "NC-17" => "1", "PG" => "1", "PG-13" => "1", "R" => "1"}, "sort_by" => "release_date"}
+  Rendering layout layouts/application.html.erb
+  Rendering movies/index.html.erb within layouts/application
+  [1m[36mMovie Load (0.6ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."rating" IN ('G', 'NC-17', 'PG', 'PG-13', 'R') ORDER BY release_date /*action='index',application='Roteenpotatoes',controller='movies'*/[0m
+  ↳ app/views/movies/index.html.erb:32
+  Rendered movies/index.html.erb within layouts/application (Duration: 5.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 7.1ms | GC: 0.0ms)
+Completed 200 OK in 15ms (Views: 7.7ms | ActiveRecord: 0.6ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/movies" for 127.0.0.1 at 2026-04-26 14:46:59 -0300
+Processing by MoviesController#index as HTML
+Redirected to http://127.0.0.1:3000/movies?ratings%5BG%5D=1&ratings%5BNC-17%5D=1&ratings%5BPG%5D=1&ratings%5BPG-13%5D=1&ratings%5BR%5D=1&sort_by=release_date
+↳ app/controllers/movies_controller.rb:33:in 'MoviesController#index'
+Completed 302 Found in 10ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/movies?ratings%5BG%5D=1&ratings%5BNC-17%5D=1&ratings%5BPG%5D=1&ratings%5BPG-13%5D=1&ratings%5BR%5D=1&sort_by=release_date" for 127.0.0.1 at 2026-04-26 14:46:59 -0300
+Processing by MoviesController#index as HTML
+  Parameters: {"ratings" => {"G" => "1", "NC-17" => "1", "PG" => "1", "PG-13" => "1", "R" => "1"}, "sort_by" => "release_date"}
+  Rendering layout layouts/application.html.erb
+  Rendering movies/index.html.erb within layouts/application
+  [1m[36mMovie Load (0.3ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."rating" IN ('G', 'NC-17', 'PG', 'PG-13', 'R') ORDER BY release_date /*action='index',application='Roteenpotatoes',controller='movies'*/[0m
+  ↳ app/views/movies/index.html.erb:32
+  Rendered movies/index.html.erb within layouts/application (Duration: 5.9ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 9.0ms | GC: 0.0ms)
+Completed 200 OK in 18ms (Views: 10.9ms | ActiveRecord: 0.3ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/movies" for 127.0.0.1 at 2026-04-26 14:47:00 -0300
+Processing by MoviesController#index as HTML
+Redirected to http://127.0.0.1:3000/movies?ratings%5BG%5D=1&ratings%5BNC-17%5D=1&ratings%5BPG%5D=1&ratings%5BPG-13%5D=1&ratings%5BR%5D=1&sort_by=release_date
+↳ app/controllers/movies_controller.rb:33:in 'MoviesController#index'
+Completed 302 Found in 11ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/movies?ratings%5BG%5D=1&ratings%5BNC-17%5D=1&ratings%5BPG%5D=1&ratings%5BPG-13%5D=1&ratings%5BR%5D=1&sort_by=release_date" for 127.0.0.1 at 2026-04-26 14:47:00 -0300
+Processing by MoviesController#index as HTML
+  Parameters: {"ratings" => {"G" => "1", "NC-17" => "1", "PG" => "1", "PG-13" => "1", "R" => "1"}, "sort_by" => "release_date"}
+  Rendering layout layouts/application.html.erb
+  Rendering movies/index.html.erb within layouts/application
+  [1m[36mMovie Load (0.2ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."rating" IN ('G', 'NC-17', 'PG', 'PG-13', 'R') ORDER BY release_date /*action='index',application='Roteenpotatoes',controller='movies'*/[0m
+  ↳ app/views/movies/index.html.erb:32
+  Rendered movies/index.html.erb within layouts/application (Duration: 3.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.9ms | GC: 0.0ms)
+Completed 200 OK in 14ms (Views: 5.8ms | ActiveRecord: 0.2ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/movies/new" for 127.0.0.1 at 2026-04-26 14:47:01 -0300
+Processing by MoviesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering movies/new.html.erb within layouts/application
+  Rendered movies/_form.html.erb (Duration: 2.8ms | GC: 0.0ms)
+  Rendered movies/new.html.erb within layouts/application (Duration: 3.7ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 6.4ms | GC: 0.0ms)
+Completed 200 OK in 21ms (Views: 9.2ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started DELETE "/movies/3?_method=delete" for 127.0.0.1 at 2026-04-26 14:47:03 -0300
+Processing by MoviesController#destroy as TURBO_STREAM
+  Parameters: {"id" => "3"}
+  [1m[36mMovie Load (0.2ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."id" = 3 LIMIT 1 /*action='destroy',application='Roteenpotatoes',controller='movies'*/[0m
+  ↳ app/controllers/movies_controller.rb:82:in 'MoviesController#set_movie'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='destroy',application='Roteenpotatoes',controller='movies'*/[0m
+  ↳ app/controllers/movies_controller.rb:74:in 'MoviesController#destroy'
+  [1m[36mMovie Destroy (2.9ms)[0m  [1m[31mDELETE FROM "movies" WHERE "movies"."id" = 3 /*action='destroy',application='Roteenpotatoes',controller='movies'*/[0m
+  ↳ app/controllers/movies_controller.rb:74:in 'MoviesController#destroy'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='destroy',application='Roteenpotatoes',controller='movies'*/[0m
+  ↳ app/controllers/movies_controller.rb:74:in 'MoviesController#destroy'
+Redirected to http://127.0.0.1:3000/movies
+↳ app/controllers/movies_controller.rb:76:in 'MoviesController#destroy'
+Completed 302 Found in 19ms (ActiveRecord: 3.3ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/movies" for 127.0.0.1 at 2026-04-26 14:47:03 -0300
+Processing by MoviesController#index as TURBO_STREAM
+Redirected to http://127.0.0.1:3000/movies?ratings%5BG%5D=1&ratings%5BNC-17%5D=1&ratings%5BPG%5D=1&ratings%5BPG-13%5D=1&ratings%5BR%5D=1&sort_by=release_date
+↳ app/controllers/movies_controller.rb:33:in 'MoviesController#index'
+Completed 302 Found in 7ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/movies?ratings%5BG%5D=1&ratings%5BNC-17%5D=1&ratings%5BPG%5D=1&ratings%5BPG-13%5D=1&ratings%5BR%5D=1&sort_by=release_date" for 127.0.0.1 at 2026-04-26 14:47:03 -0300
+Processing by MoviesController#index as TURBO_STREAM
+  Parameters: {"ratings" => {"G" => "1", "NC-17" => "1", "PG" => "1", "PG-13" => "1", "R" => "1"}, "sort_by" => "release_date"}
+  Rendering layout layouts/application.html.erb
+  Rendering movies/index.html.erb within layouts/application
+  [1m[36mMovie Load (0.2ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."rating" IN ('G', 'NC-17', 'PG', 'PG-13', 'R') ORDER BY release_date /*action='index',application='Roteenpotatoes',controller='movies'*/[0m
+  ↳ app/views/movies/index.html.erb:32
+  Rendered movies/index.html.erb within layouts/application (Duration: 3.9ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 5.3ms | GC: 0.0ms)
+Completed 200 OK in 14ms (Views: 6.2ms | ActiveRecord: 0.2ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/movies/new" for 127.0.0.1 at 2026-04-26 14:47:04 -0300
+Processing by MoviesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering movies/new.html.erb within layouts/application
+  Rendered movies/_form.html.erb (Duration: 1.8ms | GC: 0.0ms)
+  Rendered movies/new.html.erb within layouts/application (Duration: 2.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.3ms | GC: 0.0ms)
+Completed 200 OK in 13ms (Views: 5.7ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Roteenpotatoes'*/[0m
+  [1m[36mCACHE ActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mCACHE ActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mCACHE ActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mCACHE ActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Roteenpotatoes'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='Roteenpotatoes'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Roteenpotatoes'*/[0m
+Migrating to AddDirectorToMovies (20260502003224)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='Roteenpotatoes'*/[0m
+  [1m[35m (3.2ms)[0m  [1m[35mALTER TABLE "movies" ADD "director" varchar /*application='Roteenpotatoes'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260502003224') RETURNING "version" /*application='Roteenpotatoes'*/[0m
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='Roteenpotatoes'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Roteenpotatoes'*/[0m

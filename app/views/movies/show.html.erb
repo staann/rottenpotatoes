@@ -1,4 +1,27 @@
-<%= render @movie %>
+<h2>Details about <%= @movie.title %></h2>
+
+<p>
+  <strong>Director:</strong>
+  <%= @movie.director %>
+</p>
+
+<p>
+  <strong>Rating:</strong>
+  <%= @movie.rating %>
+</p>
+
+<p>
+  <strong>Release date:</strong>
+  <%= @movie.release_date %>
+</p>
+
+  <p>
+    <strong>Rating:</strong>
+    <%= @movie.rating %>
+  </p>
+
+  <%= link_to "Find Movies With Same Director", search_directors_movie_path(@movie), class: 'btn btn-primary' %>
+<br/>
 
 <div>
   <%= link_to "Edit info", edit_movie_path(@movie) %> |

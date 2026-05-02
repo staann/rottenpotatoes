@@ -1,3 +1,5 @@
 tmp/
 .venv/
 .kamal/
+vendor/
+.bundle/

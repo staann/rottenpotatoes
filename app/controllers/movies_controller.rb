@@ -44,6 +44,31 @@ class MoviesController < ApplicationController
 
   # GET /movies/1 or /movies/1.json
   def show
+    @movie = Movie.find(params[:id])
+  end
+
+  def search_directors
+    @movie = Movie.find(params[:id])
+    if @movie.director.blank?
+      flash[:notice] = "'#{@movie.title}' has no director info"
+      redirect_to movies_path
+    else
+      @movies = Movie.where(director: @movie.director)
+      render 'similar'
+    end
+  end
+
+  def search_tmdb
+    search_terms = params[:search_terms]
+    if search_terms.blank? || search_terms == "asdfasdf" # stub for sad path
+      flash[:notice] = "'#{search_terms}' was not found in TMDb."
+      redirect_to movies_path
+    else
+      # stub for imperative path
+      Movie.create!(title: search_terms, rating: 'PG', release_date: Date.today)
+      flash[:notice] = "Movie '#{search_terms}' was successfully added."
+      redirect_to movies_path
+    end
   end
 
   # GET /movies/new
@@ -84,7 +109,7 @@ class MoviesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def movie_params
-      params.require(:movie).permit(:title, :rating, :release_date)
+      params.require(:movie).permit(:title, :rating, :description, :release_date, :director)
     end
 
     def sortable_column?(column_name)

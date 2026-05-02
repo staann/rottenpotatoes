@@ -1,0 +1,42 @@
+Tarefa de Behavior Driven
+Development (BDD) - Engenharia de
+Software
+Esta atividade tem como objetivo familiarizar os estudantes da disciplina de
+Engenharia de Software com a prática de Behavior Driven Development (BDD) e sua
+aplicação em um projeto SaaS. Os alunos deverão utilizar os conceitos de cenários
+BDD para guiar a implementação e o teste de funcionalidades dentro de uma
+aplicação existente.
+
+Objetivo da Tarefa
+1. Implementar apenas o sad path para a feature “User can add movie by
+searching for it in The Movie Database (TMDb)” (1.)
+2. Implementar o cenário imperativo “View movie list after adding 2 movies e
+ordenar por ordem alfabética de título de filmes” (2.)
+3. Converter o cenário (2.) para o modo declarativo.
+Implementar o cenário BDD e demonstrar a execução no seu próprio
+"RottenPotatoes".
+
+Cenários para o BDD
+1. Try to add nonexistent movie (sad path)
+
+Feature: User can add movie by searching for it in The Movie Database (TMDb)As a movie fanSo that I can add new movies without manual tediumI want to add movies by looking up their details in TMDbBackground: Start from the Search form on the home pageGiven I am on the Rotten Potatoes home pageThen I should see "Search TMDb for a movie"Scenario: Try to add nonexistent movie (sad path)When I fill in "Search Terms" with "Movie That Does Not Exist"And I press "Search TMDb"Then I should be on the Rotten Potatoes home pageAnd I should see ""Movie That Does Not Exist' was not found in TMDb."Scenario: Try to add existing movie (happy path)When I fill in "Search Terms" with "Inception"And I press "Search TMDb"Then I should be on the Rotten Potatoes home pageAnd I should see "Inception"
+
+2. View movie list after adding 2 movies (Imperative)
+
+
+Given I am on the Rotten Potatoes home pageWhen I follow "Add new movie"Then I should be on the Create New Movie pageWhen I fill in "Title" with "Zorro"And I select "PG" from "Rating"And I press "Save Changes"Then I should be on the Rotten Potatoes home pageWhen I follow "Add new movie"Then I should be on theCreate New Movie pageWhen I fill in "Title" with "Apocalypse Now"And I select "R" from "Rating"And I press "Save Changes"Then I should be on the Rotten Potatoes home pageWhen I follow "Movie Title"Then I should see "Apocalypse Now" before "Zorro"88
+
+Escopo da Entrega
+A entrega desta tarefa consiste em dois componentes principais:
+
+1. Implementação dos Cenários BDD: O aluno deve escrever os arquivos de
+feature BDD e implementar os step definitions correspondentes na aplicação
+RottenPotatoes. O código-fonte implementado deve ser entregue.
+2. Gravação do Vídeo Explicativo: O aluno deve gravar um vídeo demonstrando a
+execução do cenário BDD na aplicação e, de forma clara e concisa, explicar a
+função de cada step definition implementado.
+Instruções
+1. Abra o SEU RottenPotatoes.
+2. Crie o arquivo .feature conforme o roteiro fornecido.
+3. Implemente os métodos de step definition necessários para que o cenário BDD
+possa ser executado com sucesso na aplicação.

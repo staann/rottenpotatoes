@@ -11,22 +11,27 @@
     </div>
   <% end %>
 
-  <div>
+  <div class="field">
     <%= form.label :title, style: "display: block" %>
     <%= form.text_field :title %>
   </div>
 
-  <div>
+  <div class="field">
     <%= form.label :rating, style: "display: block" %>
     <%= form.select :rating, ["G", "PG", "PG-13", "R", "NC-17"] %>
   </div>
 
-  <div>
-    <%= form.label :release_date, style: "display: block" %>
+  <div class="field">
+    <%= form.label :release_date %>
     <%= form.date_select :release_date %>
   </div>
 
-  <div>
-    <%= form.submit "Save Changes" %>
+  <div class="field">
+    <%= form.label :director, "Director" %>
+    <%= form.text_field :director %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Update Movie Info" %>
   </div>
 <% end %>

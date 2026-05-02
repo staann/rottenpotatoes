@@ -12,6 +12,13 @@
   <%= submit_tag "Refresh", id: "ratings_submit" %>
 <% end %>
 
+<h2>Search TMDb for a movie</h2>
+<%= form_with url: search_tmdb_path, method: :post, local: true do |form| %>
+  <%= form.label :search_terms, "Search Terms" %>
+  <%= form.text_field :search_terms %>
+  <%= form.submit "Search TMDb" %>
+<% end %>
+
 <table id="movies">
   <thead>
     <tr>
@@ -43,4 +50,4 @@
   </tbody>
 </table>
 
-<%= link_to "Add New Movie", new_movie_path %>
+<%= link_to "Add New Movie", new_movie_path, class: "btn btn-primary" %>

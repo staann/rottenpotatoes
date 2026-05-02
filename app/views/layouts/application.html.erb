@@ -24,12 +24,19 @@
   </head>
 
   <body>
-    <% if flash[:notice] %>
-      <div id="notice" class="message"><%= flash[:notice] %></div>
-    <% elsif flash[:warning] %>
-      <div id="warning" class="message"><%= flash[:warning] %></div>
-    <% end %>
+    <header>
+      <h1><%= link_to "Rotten Potatoes", movies_path %></h1>
+    </header>
 
-    <%= yield %>
+    <main class="container">
+      <% if flash[:notice] %>
+        <div id="notice" class="alert alert-info"><%= flash[:notice] %></div>
+      <% end %>
+      <% if flash[:alert] %>
+        <div id="alert" class="alert alert-danger"><%= flash[:alert] %></div>
+      <% end %>
+
+      <%= yield %>
+    </main>
   </body>
 </html>
