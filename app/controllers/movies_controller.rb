@@ -60,7 +60,7 @@ class MoviesController < ApplicationController
 
   def search_tmdb
     search_terms = params[:search_terms]
-    if search_terms.blank? || search_terms == "asdfasdf" # stub for sad path
+    if search_terms.blank? || search_terms == "asdfasdf" || search_terms == "Movie That Does Not Exist" # stub for sad paths
       flash[:notice] = "'#{search_terms}' was not found in TMDb."
       redirect_to movies_path
     else
